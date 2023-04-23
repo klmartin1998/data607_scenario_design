@@ -1,0 +1,78 @@
+---
+title: "Evaluating the Spotify Recommendation System"
+author: "Kory Martin"
+date: "2023-04-22"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    toc: yes
+---
+
+## Introdution
+Music is one of the core forms of entertainment content consumed by individuals on a frequent basis. As the music industry has evolved over the past couple of decades, to include more digital music, music streaming platforms have become a major source for helping music listeners connect with the music creators. 
+
+Spotify is one of the major players in this space, that includes other large platforms and services from the likes of Apple (Apple Music), Amazon (Amazon Music), and Google (Google Music and YouTube). With over 500 millions users and over 205 music subscribers in more than 180 markets[1](https://newsroom.spotify.com/company-info/), Spotify is a dominant player in the market, holding over 31% of global music streaming market share[2](https://headphonesaddict.com/spotify-statistics/).
+
+Spotify's primary sources of revenue are user subscriptions and advertising revenue. Therefore, one of their main operational goals to drive their revenue is to delight users so that they are motivated to upgrade to a subscription service and continue to renew their subscription. Or to increase the total amount of engagement by users in order to generate more advertising impressions and increase the amount of revenue generated from their advertising program. According to 40+ Spotify Statistics, users spend an average of 1.22 hours daily listenting to Spotify [3](https://headphonesaddict.com/spotify-statistics/).
+
+The key to driving increased engagement and delighting their users, is their recommendation engine. Accordiing to the article "Uncovering How the Spotify Alogithm Works" by Hucker Marius, "[to] deliver the best service to [their users], there is one thing at the heart of Spotify: Algorithms & Machine Learning. The better Spotify understands the users and the greater the customer experience is, the more users can be convinced, converted to paying customers, and held as customers. In other words, data and algorithms are Spotify’s opportunity to not be crunched between Apple, Amazon, and Google and so far they do a pretty good job."[4](https://towardsdatascience.com/uncovering-how-the-spotify-algorithm-works-4d3c021ebc0)
+
+For this assignment, we explore the Spotify recommendation engine, by examining it through the framework of Scenario Design and answering the following three questions:
+
+1. Who are your target users?
+2. What are their goals?
+3. How can you help them accomplish thoose goals?
+
+
+## Scenario Design Analysis
+When considering the primary use-cases for the Spotify platform and their recommendation system, the two user groups that I identified are the Music Consumers and the Music Creators. 
+
+### User Goup A - Music Consumers
+The music consumers for Spotify are the individuals who utilize the platform as a music player and a source for discovering new musical content and organizing and playing music. For the company, these represent users that are either paying for a subscription to the service or are on a free-tier that is subsidized by advertising. In either case, the goal for the organization is to delight the customer and surface music recommendations that are relevant to the customer and leads to increase engagement with the platform as measured by time-spent on the site. With paying subscribers this can translate into renewed subscriptions, and for users in the free-tier, this can translate into more advertising revenue. 
+
+For the music consumers, their main goal is to maximize their enjoyment on the app by listening to the music that is relevant to them and discovering new music and artists that they can enjoy. Many music listeners have a general appreciation for music and enjoy the process of being able to discover new music and new artists. Additionally, often times music is meant to serve as an ambient experience - either playing in the background while completing other tasks, or being used to provide background entertainment for a social event. In either case, the goal is to be able to create a vibe that is not thrown off by misplaced songs, and thereby serving a purpose being present without being a distraction.
+
+Spotify's recommendation system helps listeners achieve their goals by providing them with recommendations that are based on the user's "music identity." The more relevant the music recommendations are, the more listeners can have an enjoyable listening experience and will use the platform as its trusted musical service and will spend endless hours engaged with the platform. Helping users find songs and artists that are similar to those that they have already shown an affinity for is very helpful to their overall goals. Additionally, this results in the platform becoming more sticky in the eyes of the music consumer, which results in increased revenue for Spotify in terms of user retention and increased advertising revenue.
+
+
+### User Group B - Music Creators
+The music creators are literally the life-blood of Spotfy and their recommender system. Artists are the ones who create the content that drives music enthusiasts and fans to the platform. 
+
+For the music creators, their main goal is to have their music discovered by listeners and to generate as many spins as possible. The economics for the music creator is directly tied to these two goals. In terms of generating money from the platform, the artist is paid based on the number of streams they receive on the platform. Therefore, their ability to be included in the platform's generated playlists and by music fans directly has a direct impact on their economic interests.
+
+Additionally, music creators generate money offline by selling merchandise, tickets to shows, and digital and physical music sales. Therefore, their ability to expand their fan base has a direct impact on the audience and market for their music and other ancillary products.
+
+The Spotify recommender system plays a critical role in helping music creator achieve their key goals. By identifying users that have not yet discovered the artists but whose profile suggests that they would enjoy their music, the recommender system is potentially creating a new fan for the artist and their music. Additionally, discovering a particular favorite song by the artist can result in the user adding the song to their personal playlist and therefore helping to generate more streams for the song and resulting in more income for the music creator.
+
+
+## Reverse Engineering
+In my attempt to reverse engineer the site's recommendation engine, I reviewed the sites recommendation engine and found this article titled [Inside Spotify’s Recommender System: A Complete Guide to Spotify Recommendation Algorithms](https://www.music-tomorrow.com/blog/how-spotify-recommendation-system-works-a-complete-guide-2022) and this article titled [Uncovering How the Spotify Algorithm Works](https://towardsdatascience.com/uncovering-how-the-spotify-algorithm-works-4d3c021ebc0) to be very helpful in this effort. 
+
+One thing that I observe from viewing the recommendations that the site offers, is that they are heavily trying to take what they've learned about my past listening and appear to be very heavy on recommending similar music. This causes me to feel as though their recommendation engine is using my past listening history to create a profile of who I am - in some instances - even beyond the music I listen to. For example, with Spotify since they also offer Podcasts on their platform, which I have never listened to on their platform, they are recommending podcasts that seem to be more a reflection of who they think I am via my music and not based on who I actually am.
+
+But in addition to them creating a profile on me as an individual to help them determine what I like, they have an algorithm that also works to group similarities in the music at the artist and track level. This grouping allows them to - once they've identified a user's personal tasts - to then provide music that is similar. 
+
+I would imagine that their recommendation engine is built by incorporating preferences based on user's that are similiar to one another, and separately based on music and artists that are similar to the artists that I actually enjoy. 
+
+Some of the core Machine Language topics and algorithmic concepts that are used in building out their recommender system include:
+- Classification
+- Clustering
+- Collaborative Filtering
+- Sentiment analysis 
+
+## Recommendations for Improvement
+One of the first things that I've noticed when looking at my own recommendations on the platform is that they don't appear to be too effective at realizing that while I may have music tastes that would warrant suggesting certain types of music on an ongoing basis, I don't believe my tastes in music is an effective predictor of my tastes and interests in podcasts. I feel as though their algorithm has leaned too heavily on data that they've generated from my music listening to build out the recommendations for podcasts. My recommendation for them is to simply start by asking me to complete a short survey or questionnaire to generate the baseline information. Then based on that info, they can create an initial set of recommended shows and then based on my activity that can either reinforce my pre-identified selections or help the algorithm make the appropriate adjustments.
+
+Another problem that I noticed, is that the algorithm seems to not take into account that listerners sometimes are listening to music over a certain span of time, to reflect their mood or motivation at the time. However, this may not truly be an indicator of their true interests and where their actual baseline level of music interests lies. To fix this, the recommendation algorithm should be time-weighted - maybe weighing the music interests data collected over the most recent X number of sessions. This way as the listener goes through different stages of musical interests, the algorithm can continue to evolve accordingly.
+
+## Conclusion
+Recommendation engines play a critical role in helping users to discover information, products, or other things that they may have been previously unaware of, but that can be of interest and value to them. When done right, recommendation engines can enhance the "win-win" approach between the customer and the business, by helping the business generate additional revenue, while helping the customer find things of interest to them that may have been unaware of otherwise. Recommendation engines are a key component and area of focus for Data Science professionals to understand - both in terms of how they are implemented and also the importand role they play ini helping to achieve a business' revenue and profit objectives.
+
+
+## Sources
+1. [About Spotify](https://newsroom.spotify.com/company-info/)
+2. [40+ Spotify Statistics](https://headphonesaddict.com/spotify-statistics/)
+3. [40+ Spotify Statistics](https://headphonesaddict.com/spotify-statistics/)
+4. [Uncovering How the Spotify Algorithm Works](https://towardsdatascience.com/uncovering-how-the-spotify-algorithm-works-4d3c021ebc0)
+5. [Inside Spotify’s Recommender System: A Complete Guide to Spotify Recommendation Algorithms](https://www.music-tomorrow.com/blog/how-spotify-recommendation-system-works-a-complete-guide-2022)
